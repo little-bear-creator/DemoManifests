@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: test-debian-echo
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: debian-echo
+        image: debian
+        command:
+          - "echo"
+          - "-e"
+          - "Hello-world"
+        restartPolicy: Never
+  backoffLimit: 2
