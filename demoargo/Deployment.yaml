@@ -17,3 +17,10 @@ spec:
         image: 989988/demoapp:1.0.0
         ports:
         - containerPort: 8080
+      livenessProbe:
+        exec:
+          command:
+          - cat
+          - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
