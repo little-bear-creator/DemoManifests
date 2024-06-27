@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: minikube
+  - host: mondomaine.local
     http:
       paths:
       - path: /
