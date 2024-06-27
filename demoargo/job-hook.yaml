@@ -10,10 +10,10 @@ spec:
     spec:
       containers:
       - name: debian-echo
-        image: debian:latest
+        image: alpine:latest
         command:
           - "echo"
           - "-e"
-          - "Hello-world"
-        restartPolicy: Never
+          - "Message post-sync"
+      restartPolicy: Never
   backoffLimit: 2
