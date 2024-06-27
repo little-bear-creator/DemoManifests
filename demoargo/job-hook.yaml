@@ -17,3 +17,41 @@ spec:
           - "L’application sera synchronisé avec un nouvel état désiré."
       restartPolicy: Never
   backoffLimit: 2
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: syncfail-message
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+spec:
+  template:
+    spec:
+      containers:
+      - name: syncfail-message
+        image: alpine:latest
+        command:
+          - "echo"
+          - "-e"
+          - "La synchronisation a échouée."
+      restartPolicy: Never
+  backoffLimit: 2
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: postsync-message
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: postsync-message
+        image: alpine:latest
+        command:
+          - "echo"
+          - "-e"
+          - "La synchronisation s'est bien passée."
+      restartPolicy: Never
+  backoffLimit: 2
