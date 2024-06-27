@@ -1,19 +1,19 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: test-debian-echo
+  generateName: presync-message
   annotations:
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook: PreSync
 #    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
       containers:
-      - name: debian-echo
+      - name: presync-message
         image: alpine:latest
         command:
           - "echo"
           - "-e"
-          - "Message post-sync"
+          - "L’application sera synchronisé avec un nouvel état désiré."
       restartPolicy: Never
   backoffLimit: 2
