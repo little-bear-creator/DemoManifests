@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: debian-echo
-        image: debian
+        image: debian:latest
         command:
           - "echo"
           - "-e"
